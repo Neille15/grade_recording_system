@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Instrument+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Libre Baskerville", Georgia, serif;
+  --font-sans: "Instrument Sans", system-ui, sans-serif;
+  --font-mono: "DM Mono", ui-monospace, monospace;
+  --color-paper: #eef1ea;
+  --color-panel: #fbfcf8;
+  --color-ink: #14201b;
+  --color-mute: #5b6b62;
+  --color-rule: #cfd8cb;
+  --color-chalk: #12402d;
+  --color-chalk-2: #1d5c42;
+  --color-tint: #dfe8dc;
+  --color-signal: #d9600f;
+  --color-signal-bg: #fbe6d5;
+  --color-ok: #1c7a45;
+  --color-bad: #b3261e;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+body {
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  background:
+    radial-gradient(900px 500px at 100% -10%, #d6e4d3 0%, transparent 60%),
+    radial-gradient(700px 500px at -10% 110%, #f3e4cf 0%, transparent 55%),
+    var(--color-paper);
+  background-attachment: fixed;
+  font-size: 13px;
+}
+::selection {
+  background: var(--color-signal);
+  color: white;
+}
+* {
+  scrollbar-width: none;
+}
+*::-webkit-scrollbar {
+  display: none;
+}
+input:focus-visible,
+select:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-signal);
+  outline-offset: 1px;
+}
+.num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+.lbl {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-mute);
+  font-weight: 600;
+}
+@media print {
+  .noprint {
+    display: none !important;
+  }
+  body {
+    background: white;
+  }
+}
