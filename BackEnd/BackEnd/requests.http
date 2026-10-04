@@ -1,0 +1,42 @@
+@baseUrl = https://localhost:7000
+@token = paste-login-token-here
+@sectionId = 1
+@studentId = 1
+
+### Register pending teacher
+POST {{baseUrl}}/api/auth/register
+Content-Type: application/json
+
+{"fullName":"Demo Teacher","email":"teacher@example.com","password":"ChangeMe123!","role":"teacher","title":"Subject Teacher"}
+
+### Login (requires Active status)
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{"email":"aquino@demo.local","password":"<admin-password>"}
+
+### Current user
+GET {{baseUrl}}/api/auth/me
+Authorization: Bearer {{token}}
+
+### List students (requires section adviser)
+GET {{baseUrl}}/api/students/section/{{sectionId}}
+Authorization: Bearer {{token}}
+
+### Add student
+POST {{baseUrl}}/api/students/section/{{sectionId}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{"lrn":"2026-10-9999","fullName":"Sample, Student"}
+
+### Update student
+PUT {{baseUrl}}/api/students/{{studentId}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{"lrn":"2026-10-9999","fullName":"Sample, Updated Student"}
+
+### Deactivate student
+DELETE {{baseUrl}}/api/students/{{studentId}}
+Authorization: Bearer {{token}}
